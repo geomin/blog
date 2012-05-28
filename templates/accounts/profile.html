@@ -1,0 +1,6 @@
+{% extends 'homepage/index.html' %}
+
+{% block content %}
+    {{ profile.user }}'s profile
+    <div>{{ profile.get_gender_display }}</div>
+{% endblock %}

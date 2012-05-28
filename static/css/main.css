@@ -1,0 +1,15 @@
+#top{
+ font-size:3em;
+}
+
+#navi{
+ border-bottom:2px solid #000;
+}
+
+#content{
+ background-color:#eee;
+}
+
+#footer{
+ font-size:0.6em;
+}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+ Index Page
+{% endblock %}
+
+{% block navi %}
+ <a href="{% url homepage_index %}">home</a> - <a href="{% url homepage_about %}">about</a> -
+ <a href="{% url homepage_archive %}">archive</a> - <a href="{% url homepage_contact %}">contact</a>
+ {% if user.is_authenticated %}
+    <a href="{% url accounts_profile %}">profile</a> - <a href="{% url accounts_logout %}">logout</a>
+ {% else %}
+     <a href="{% url accounts_login %}">login</a> - <a href="{% url accounts_register %}">register</a>
+ {% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+    <h3>Entries:</h3>
+
+    {% for e in page.object_list %}
+        <div> {{ e.title }} - {{ e.created }} </div>
+            <div>{{ e.text }}</div>
+
+        <br/>
+    {% endfor %}
+
+    {% if page.has_previous %}
+        <a href="?page={{ page.previous_page_number }}">prev</a>
+    {% endif %}
+
+    | {{ page.number }} |
+
+    {% if page.has_next %}
+    <a href="?page={{ page.next_page_number }}">next</a>
+    {% endif %}
+
+{% endblock %}
+
+{% block footer %}
+ 2011 - MyBlog
+{% endblock %}
